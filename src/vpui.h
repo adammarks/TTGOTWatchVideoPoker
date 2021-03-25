@@ -13,7 +13,7 @@ public:
 
 private:
    void showCredits();
-   void showHand();
+   void showHand( bool cardsClickable );
    void firstDeal();
    void secondDeal();
 

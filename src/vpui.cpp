@@ -34,7 +34,7 @@ void PokerUI::showCredits()
    lv_label_set_text_fmt(lblCredits, "Credits %d", credits);
 }
 
-void PokerUI::showHand()
+void PokerUI::showHand( bool cardsClickable )
 {
    for (int i = 0; i < 5; i++)
    {
@@ -82,6 +82,8 @@ void PokerUI::showHand()
     
       lv_label_set_text(lblCard[i], cardText);
       lv_btn_set_state(btnCard[i], LV_BTN_STATE_RELEASED);
+
+      lv_obj_set_click( btnCard[i], cardsClickable );      
    }
 }
 
@@ -94,7 +96,7 @@ void PokerUI::firstDeal()
    hand.clear();
    pokerGame.DealHand(deck, hand, 5);
 
-   showHand();
+   showHand( true );
 
    lv_label_set_text(lblDeal, "Deal");
    lv_label_set_text_fmt(lblWonOrLost,"Select Cards to Replace" );
@@ -116,7 +118,7 @@ void PokerUI::secondDeal()
       }
    }
 
-   showHand();
+   showHand( false );
 
    lv_label_set_text(lblDeal, "Bet");
 
@@ -126,6 +128,10 @@ void PokerUI::secondDeal()
    {
       lv_label_set_text_fmt(lblWonOrLost,"Won %d with %s", payout, pokerHand.string().c_str() );
       credits += payout;
+   }
+   else
+   {
+      lv_label_set_text(lblWonOrLost,"No Winning Hands");
    }
 
    showCredits();
