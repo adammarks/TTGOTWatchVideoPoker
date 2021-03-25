@@ -67,6 +67,4 @@ public:
       std::vector<std::string> &deck,
       std::vector<std::string> &hand,
       int numberOfCardsToDeal);
-
-
 };

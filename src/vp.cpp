@@ -1,8 +1,4 @@
 #include "vp.h"
-
-// #include "config.h"
-// #include <LilyGoWatch.h>
-
 #include <iostream>
 #include <stdlib.h>
 
